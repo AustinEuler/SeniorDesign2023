@@ -7,7 +7,14 @@
   <body>
     <%- include('../partials/header'); %>
     <h3> Survey Complete! </h3>
-    <p> Your preferences have been saved, <%- {username} %></p>
+
+    <% if ((username) == "Guest") { %>
+      <p> Hey <%= username %> , if you want your preferences saved
+          please click the link below to create an account. 
+      </p>
+   <% }else{ %>
+      <p> Your preferences have been saved, <%= username %> </p>
+   <% }%>
 
   </body>
   

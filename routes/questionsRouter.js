@@ -70,9 +70,6 @@ router.get('/started',(req,res)=> {
         res.render('pages/surveyEnd', {username: req.session.username})
     }
 
-    
-
-
 })
 
 

@@ -57,8 +57,10 @@ app.get("/Question1", function(req,res){
 app.get('*',(req,res)=>{
     if(!req.session.isuser_valid) {
         req.session.isuser_valid = false
+        req.session.username = "Guest"
     }
     console.log("User Authenticated? : ",req.session.isuser_valid)
+    console.log("Username : ", req.session.username)
     let pathway = url.parse(req.url).pathname;
     //console.log(pathway)
     if(pathway != '/'){
