@@ -23,7 +23,6 @@ router.get('/',(req,res)=>{
 router.get('/startSurvey', (req,res)=> {
     req.session.counter = 0
     req.session.surveyStarted = false
-    req.session.surveyEnded = true
     res.render('pages/surveyStart', {username:req.session.username})
 })
 
@@ -32,7 +31,6 @@ router.get('/started',(req,res)=> {
     counter = req.session.counter
     if(surveyStarted == false){
         req.session.surveyStarted = true
-        req.session.surveyEnded = false
         
     }
     if(counter == 0){

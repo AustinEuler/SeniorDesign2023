@@ -36,7 +36,7 @@ app.get("/", function(req, res){
     });
 
 app.get("/login", function(req,res){
-    res.render('pages/Login');
+    res.render('pages/Login', {username: req.session.username});
 })
 app.get("/registration", function(req,res){
     res.render('pages/Registration');
