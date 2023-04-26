@@ -123,7 +123,6 @@ router.get("/logout", (req,res)=>{
 
 })
 
-
 router.get("/Registration", (req, res)=>{
     res.render('pages/Registration', {username: req.session.username})
 })

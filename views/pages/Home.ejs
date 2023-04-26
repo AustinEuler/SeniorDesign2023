@@ -7,12 +7,47 @@
   <body>
     <%- include('../partials/header'); %>
     <h1> We're getting 1st Place </h1>
-    
-    
-    <img src="../public/images/austin.PNG">
-    <img src="../public/images/aikya.PNG">
-    <img src="../public/images/kristian.PNG">
-    
+
+
+    <div id="carouselExampleSlidesOnly" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner">
+        <div class="carousel-item active">
+          <img class="d-block w-100" src="public/images/clarkAtlanta.jpeg" width="200" height="400" alt="First slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Clark Atlanta University</h5>
+            <p>Est. 1988</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="public/images/spelman.jpeg" width="200" height="400" alt="Second slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Spelman College</h5>
+            <p>Est. 1881</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="/public/images/morris_brown.jpeg" width="200" height="400" alt="Third slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Morris Brown College</h5>
+            <p>Est. 1881</p>
+          </div>
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" src="/public/images/morehouse.jpeg" width="200" height="400" alt="Fourth slide">
+          <div class="carousel-caption d-none d-md-block">
+            <h5>Morehouse College</h5>
+            <p>Est. 1867</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <h1> Which School in the AUC is right for you?</h1>
+    <form action = "/survey" method= "get">
+      <div class="ml-auto mr-sm-5">
+        <button class="btn btn-success" >Take Our Survey!</button>
+    </div>
+
+    </form>
 
 
   </body>
