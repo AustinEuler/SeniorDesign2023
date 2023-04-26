@@ -53,9 +53,9 @@ app.get('/logout',(req,res) => {
 });
 
 app.listen(PORT, () => console.log(`Server Running at port ${PORT}`));
-/*
 
-const server = http.createServer((request,response) => {
+
+/*const server = http.createServer((request,response) => {
 
     response.writeHead (200,{
         "context-type": "text/plain"
