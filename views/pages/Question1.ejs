@@ -14,30 +14,28 @@
         <div class="py-2 h5"><b>Q1. What size student population do you prefer?</b></div>
         <div class="ml-md-3 ml-sm-3 pl-md-5 pt-sm-0 pt-3" id="options">
             <label class="options">Small - Less than 5k
-                <input type="radio" name="radio1" value="Small" required>
+                <input type="radio" name="Q1" value="Small" required>
                 <span class="checkmark"></span>
             </label>
             <label class="options">Medium - Between 5k and 15k
-                <input type="radio" name="radio2" value="Medium">
+                <input type="radio" name="Q1" value="Medium">
                 <span class="checkmark"></span>
             </label>
             <label class="options">Large - More than 15K
-                <input type="radio" name="radio3" value="Large">
+                <input type="radio" name="Q1" value="Large">
                 <span class="checkmark"></span>
             </label>
             <label class="options">Does Not Matter 
-                <input type="radio" name="radio4" value="Does Not Matter">
+                <input type="radio" name="Q1" value="Does Not Matter">
                 <span class="checkmark"></span>
             </label>
         </div>
     </div>
     <div class="d-flex align-items-center pt-3">
-        <input type="hidden" value="P2" id="pgCounter">
-        <div id="prev">
-            <button class="btn btn-previous" type="submit" data-btn="P0">Previous</button>
-        </div>
         <div class="ml-auto mr-sm-5">
-            <button class="btn btn-success" type="submit" >Next</button>
+            <div id="next">
+                <button class="btn btn-success" type="submit" name="button" value="next">Next</button>
+            </div>
         </div>
     </div>
   </form>

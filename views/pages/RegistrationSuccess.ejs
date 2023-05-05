@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>HBCUmatch - Registration </title>
+    <%- include('../partials/head'); %>
+  </head>
+  <body>
+    <%- include('../partials/header'); %>
+    <h1>Thank you for making an account with us, <%= username %> ! </h1>
+    
+    <% if((CompletedSurveyAsGuest) == false){ %>
+        <p>Take our quick survey to get started - </p>
+        <form action = "/survey" method= "get">
+            <div class="ml-auto mr-sm-5">
+              <button class="btn btn-success" >Start Survey</button>
+            </div> 
+        </form>   
+    <%}else{%>
+        
+        <% if((username) != "Admin") { %>
+        <p> Your survey responses have been saved! Now Go to your profile to see
+            what schools you matched with!
+        </p>
+        <form action = "/u" method= "get">
+            <div class="ml-auto mr-sm-5">
+              <button class="btn btn-success" > Go to Profile Page </button>
+            </div> 
+        </form> 
+        <%}else{%>
+            
+            <p> Go to your profile page to have access to your administrator tools.</p>
+            <form action = "/u" method= "get">
+                <div class="ml-auto mr-sm-5">
+                  <button class="btn btn-success" > Go to Profile Page </button>
+                </div> 
+            </form> 
+        <%}%>
+    <%}%>
+  </body>
+  
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+</html>
