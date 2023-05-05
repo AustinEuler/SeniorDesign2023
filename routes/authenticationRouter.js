@@ -150,8 +150,11 @@ router.post("/Registration", (req, res) =>{
         req.session.username = userInfo["name"]
         req.session.isuser_valid = true
         console.log('User has completed registration: \n', userInfo)
+        console.log("Completed survey as a Guest: ", req.session.CompletedSurveyAsGuest)
+
         res.render('pages/RegistrationSuccess', {username: req.session.username,
             CompletedSurveyAsGuest: req.session.CompletedSurveyAsGuest})
+        
     }else{
         req.session.passwordsMatch = false
         console.log("Re-typed password does not match. Redirected back to Registration page")

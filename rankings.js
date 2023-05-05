@@ -10,46 +10,40 @@ const db = mysql.createPool({
   port: "33061"
 });
 
-function rankSchools(userAnswers, schoolsToRank, HBCUmatch, callback) {
+// function to process user's answers to questionnaire
+function processQuestionnaireAnswers(userAnswers) {
+    // schools to rank
+    const schoolsToRank = ['Clark Atlanta', 'Morehouse', 'Spelman', 'Morris Brown'];
+  
+    // query to get school rankings based on user's answers
     const query = `
       SELECT school, (
         ${schoolsToRank.map((school, index) => {
           return `question${index+1} = '${userAnswers[`question${index+1}`]}'`
         }).join(' + ')}
       ) AS score
-      FROM ${HBCUmatch}
+      FROM new_schools
       WHERE school IN (${schoolsToRank.map(school => `'${school}'`).join(', ')})
       ORDER BY score DESC
     `;
   
     // connect to database and run query
     db.getConnection((err, connection) => {
-      if (err) {
-        return callback(err);
-      }
-    
-      connection.query(query, (error, results) => {
-        if (error) {
-          connection.release();
-          return callback(error);
-        }
+      if (err) throw err;
       
-        // display rankings in console
-        console.log('School Rankings:');
-        results.forEach((result, index) => {
-          console.log(`${index+1}. ${result.school}`);
-        });
+      connection.query(query, (error, results) => {
+        if (error) throw error;
         
         // save rankings to user's profile or do other actions as needed
         // ...
         
         // release database connection
         connection.release();
-  
-        return callback(null, results);
       });
     });
   }
+  
+
   
 
 

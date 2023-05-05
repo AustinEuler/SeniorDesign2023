@@ -60,7 +60,7 @@ app.get('*',(req,res)=>{
     if(req.session.isuser_valid == undefined) {
         req.session.isuser_valid = false
         req.session.username = "Guest"
-        //req.session.CompletedSurveyAsGuest = false
+        req.session.CompletedSurveyAsGuest = false
 
     }
     //console.log("-----------------------")

@@ -30,6 +30,19 @@ router.get('/profile', (req,res) =>{
 
 })
 
+router.get('/profile/preferences', (req,res) => {
+    res.render('pages/Preferences',{username: req.session.username, answers: req.session.SurveyAnswers})
+    console.log('User Location: Profile Page - Preferences')
+
+})
+
+
+router.get('/profile/results', (req,res) => {
+    res.render('pages/Results',{username: req.session.username, answers: req.session.SurveyAnswers})
+    console.log('User Location: Profile Page - Results')
+
+})
+
 router.get('/allUsers', (req,res) => {
     res.send("all users page")
     console.log('User Location: All Users Page - Admin')

@@ -19,7 +19,16 @@
       </form>  
 
    <% }else{ %>
-      <p> Your preferences have been saved, <%= username %> </p>
+      <p> Your preferences have been saved, <%= username %> ,
+        Now Go to your profile to see what schools you matched with!
+    </p>
+  
+    <form action = "/u" method= "get">
+      <div class="ml-auto mr-sm-5">
+        <button class="btn btn-success" > Go to Profile Page </button>
+      </div> 
+    </form> 
+    
    <% }%>
 
   </body>

@@ -39,18 +39,21 @@ router.post('/started',(req,res)=> {
 
     }
     */
-
+    
     prevButton = req.body.button
+    response = req.body
+
     if(surveyStarted == false){
         req.session.surveyStarted = true
     }
  
     counter = req.session.counter
- 
+    console.log(response)
     
     if(surveyStarted == false){
         req.session.surveyStarted = true
     }
+
     if(counter == 0){
         console.log("Starting survey...")
         req.session.counter += 1
@@ -58,40 +61,52 @@ router.post('/started',(req,res)=> {
         console.log("User Location: Question 1 of Survey")
     }
     else if (counter == 1){
+        req.session.SurveyAnswers["Q1"]=req.body["Q1"]
         req.session.counter += 1
         res.render('pages/Question2', {username: req.session.username})
         console.log("User Location: Question 2 of Survey")
     }
     else if (counter == 2){
+        req.session.SurveyAnswers["Q2"]=req.body["Q2"]
         req.session.counter += 1
         res.render('pages/Question3', {username: req.session.username})
         console.log("User Location: Question 3 of Survey")
     }
     else if (counter == 3){
+        req.session.SurveyAnswers["Q3"]=req.body["Q3"]
         req.session.counter += 1
         res.render('pages/Question4', {username: req.session.username})
         console.log("User Location: Question 4 of Survey")
     }
     else if (counter == 4){
+        req.session.SurveyAnswers["Q4"]=req.body["Q4"]
         req.session.counter += 1
         res.render('pages/Question5', {username: req.session.username})
         console.log("User Location: Question 5 of Survey")
     }
     else if (counter == 5){
+        req.session.SurveyAnswers["Q5"]=req.body["Q5"]
         req.session.counter += 1
         res.render('pages/Question6', {username: req.session.username})
         console.log("User Location: Question 6 of Survey")
     }
     else if (counter == 6){
+        req.session.SurveyAnswers["Q6"]=req.body["Q6"]
         req.session.counter += 1
         res.render('pages/Question7', {username: req.session.username})
         console.log("User Location: Question 7 of Survey")
     }
     else{
+        req.session.SurveyAnswers["Q7"]=req.body["Q7"]
         req.session.surveyStarted = false
-        req.session.CompletedSurveyAsGuest = true
-        console.log("Ending Survey ...")
-        console.log("Completed survey as a Guest: ", req.CompletedSurveyAsGuest)
+
+        if(req.session.username == "Guest"){
+            req.session.CompletedSurveyAsGuest = true  
+        }
+        console.log("Ending Survey ... User Responses Shown Below - ")
+        console.log(req.session.SurveyAnswers)
+        console.log("Completed survey as a Guest: ", req.session.CompletedSurveyAsGuest)
+        
         res.render('pages/surveyEnd', {username: req.session.username, 
             CompletedSurveyAsGuest: req.CompletedSurveyAsGuest})
     }
