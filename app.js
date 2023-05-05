@@ -57,12 +57,16 @@ app.get("/Question1", function(req,res){
 
 //Austin Code - Redirects to error page if user inputs the wrong URL
 app.get('*',(req,res)=>{
-    if(!req.session.isuser_valid) {
+    if(req.session.isuser_valid == undefined) {
         req.session.isuser_valid = false
         req.session.username = "Guest"
+        //req.session.CompletedSurveyAsGuest = false
+
     }
-    console.log("User Authenticated? : ",req.session.isuser_valid)
-    console.log("Username : ", req.session.username)
+    //console.log("-----------------------")
+    //console.log("User Authenticated? : ",req.session.isuser_valid)
+    //console.log("Username : ", req.session.username)
+    //console.log("Completed survey as a Guest: ", req.session.CompletedSurveyAsGuest)
     let pathway = url.parse(req.url).pathname;
     //console.log(pathway)
     if(pathway != '/'){

@@ -12,6 +12,12 @@
       <p> Hey <%= username %> , if you want your preferences saved
           please click the link below to create an account. 
       </p>
+      <form action = "/auth/Registration" method= "get">
+        <div class="ml-auto mr-sm-5">
+          <button class="btn btn-success" >Create an Account</button>
+        </div> 
+      </form>  
+
    <% }else{ %>
       <p> Your preferences have been saved, <%= username %> </p>
    <% }%>
