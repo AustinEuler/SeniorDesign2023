@@ -2,11 +2,26 @@
 <html>
   <head>
     <title>Profile Page</title>
+    <%- include('../partials/head'); %>
   </head>
   <body>
-    <h1> Under Construction </h1>
+    <%- include('../partials/header', {username:username}); %>
+    <h1> Welcome, <%= (username) %> </h1>
+
+    <% if ((username) == "Admin") { %>
+      <p> This is the administrator page, here you have access to modify user/school 
+        data in the database</p>
+
+      
+
+   <% }else{ %>
+      <p> Your preferences have been saved, <%= username %> </p>
+   <% }%>
 
   </body>
   
-
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+  
 </html>

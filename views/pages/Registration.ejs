@@ -7,7 +7,7 @@
   <body>
     <%- include('../partials/header'); %>
       <div class="container col-5">
-        <form action="/auth/register" method="post">
+        <form action="/auth/Registration" method="post">
             <div class="form-group">
             <label for="nameInput">Name</label>
             <input type="name" id="name" name="name" class="form-control"  aria-describedby="nameHelp" placeholder="Enter your name" required>
@@ -18,16 +18,42 @@
               </div>
 
             <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" id="username" name="username" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email" required>
-            <small id="emailHelp" class="form-text text-muted">Hurry up and finish this!</small>
+            <label for="emailInput">Email address</label>
+            <input type="email" id="email" name="email" class="form-control"  aria-describedby="emailHelp" placeholder="Enter email" required>
+            <small id="emailHelp" class="form-text text-muted">HeHe</small>
             </div>
             <div class="form-group">
-            <label for="exampleInputPassword1">Password</label>
-            <input type="password" id="passwd" name="passwd" class="form-control"  placeholder="Password" required>
+            <label for="passwordInput">Password</label>
+            <input type="password" id="password" name="password" class="form-control"  placeholder="Password" required>
             </div>
-              <button id="login" type="submit" class="btn btn-primary">Register</button>          </form>
+            <div class="form-group">
+              
+              <% if((passwordsMatch) == undefined) { %>
+
+                <label for="passwordCheck">Password Check </label>
+                <input type="password" id="passwordCheck" name="passwordCheck" class="form-control"  placeholder="Re-Type Password" required>
+                </div>
+                <button id="login" type="submit" class="btn btn-primary">Register</button>
+
+            <%} else if((passwordsMatch) == true) { %>
+                
+              <label for="passwordCheck"> Password Check </label>
+              <input type="password" id="passwordCheck" name="passwordCheck" class="form-control"  placeholder="Re-Type Password" required>
+              </div>
+              <button id="login" type="submit" class="btn btn-primary">Register</button> 
+
+            <%} else {%>
+
+              <label for="passwordCheck">Password Check </label>
+              <input type="password" id="passwordCheck" name="passwordCheck" class="form-control"  placeholder="Re-Type Password" required>
+              </div>
+              <small id="emailHelp" class="form-text text-muted"> ERROR - Please make sure your passwords match!</small>
+              <button id="login" type="submit" class="btn btn-primary">Register</button>
+
+            <%}%>
+
             </div>
+          </form>
       <script>
     
       </script>

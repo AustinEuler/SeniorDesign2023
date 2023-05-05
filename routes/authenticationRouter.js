@@ -35,13 +35,11 @@ router.post('/login',(req,res)=>{
     //TODO:this method has not been implemented
       let email = req.body.username
       let regPassword = req.body.passwd
-      let checkPassword = crypto.createHash('md5').update(req.body.passwd).digest('hex');
+      //let checkPassword = crypto.createHash('md5').update(req.body.passwd).digest('hex');
         let  msg=""
-        if(email=="abc@cau.edu" && regPassword=="123456"){
-            msg="Success!"
+        if(email=="admin@gmail.com" && regPassword=="admin"){
             res.render('pages/msg', {message: 'Login was a success!', username:''})
         }else
-            msg = "Failed"
             res.render('pages/msg', {message: 'Login was a failure!', username:''})
       //res.send({msg})
 });
@@ -119,17 +117,52 @@ router.get("/allUsers",(req,res)=>{
 router.get("/logout", (req,res)=>{
     req.session.isuser_valid = false
     req.session.username = undefined
+    console.log("Logging out - Redirecting to home page")
     res.redirect('../')
 
 })
 
 router.get("/Registration", (req, res)=>{
-    res.render('pages/Registration', {username: req.session.username})
+    console.log("User Location: Registration Page")
+    res.render('pages/Registration', {username: req.session.username,passwordsMatch: req.session.passwordsMatch})
 })
 
+
+router.post("/Registration", (req, res) =>{
+    console.log("Registration complete - Running through checks...")
+    req.session.passwordsMatch = undefined
+    let name = req.body.name
+    let email = req.body.email
+    let sex = req.body.sex
+    let password = req.body.password
+    let passwordCheck = req.body.passwordCheck
+
+    const userInfo = {
+        name: req.body.name,
+        email: req.body.email,
+        sex: req.body.sex,
+        password: req.body.password,
+        passwordCheck: req.body.passwordCheck      
+    }
+
+    if (userInfo.password == userInfo.passwordCheck) {
+        req.session.passwordsMatch = true
+        req.session.username = userInfo["name"]
+        req.session.isuser_valid = true
+        console.log('User has completed registration: \n', userInfo)
+        res.render('pages/RegistrationSuccess', {username: req.session.username,
+            CompletedSurveyAsGuest: req.session.CompletedSurveyAsGuest})
+    }else{
+        req.session.passwordsMatch = false
+        console.log("Re-typed password does not match. Redirected back to Registration page")
+        res.redirect("/auth/Registration")
+        
+    }
+})
 /*
 router.post("/Registration", (req, res)=>{
     let name = req.body.name
+    let sex = req.body.sex
     let email = req.body.username
     let password = req.body.passwd
     if(name && email && password){
