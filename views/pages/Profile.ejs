@@ -2,11 +2,41 @@
 <html>
   <head>
     <title>Profile Page</title>
+    <%- include('../partials/head'); %>
   </head>
   <body>
-    <h1> Under Construction </h1>
+    <%- include('../partials/header', {username:username}); %>
+    <h1> Welcome, <%= (username) %> </h1>
+
+    <% if ((username) == "Admin") { %>
+      <p> This is the administrator page, here you have access to modify user/school 
+        data in the database</p>
+        <form action = "/u/profile/preferences" method= "get">
+          <div class="ml-auto mr-sm-5">
+            <button class="btn btn-success" > View Your Saved Preferences</button>
+          </div>
+          <div class="ml-auto mr-sm-5">
+            <button class="btn btn-success" formaction = "/u/profile/results" method="get"> View Your Results</button>
+          </div>
+        </form>
+
+   <% }else{ %>
+    <form action = "/u/profile/preferences" method= "get">
+      <div class="ml-auto mr-sm-5">
+        <button class="btn btn-success" > View Your Saved Preferences</button>
+      </div>
+      <div class="ml-auto mr-sm-5">
+        <button class="btn btn-success" formaction = "/u/profile/results" method="get"> View Your Results</button>
+      </div>
+    </form>
+
+      
+   <% }%>
 
   </body>
   
-
+  <footer>
+    <%- include('../partials/footer'); %>
+  </footer>
+  
 </html>

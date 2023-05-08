@@ -2,9 +2,67 @@
 <html>
   <head>
     <title>Preferences Page</title>
+    <%- include('../partials/head'); %>
   </head>
   <body>
-    <h1> Under Construction </h1>
+    <%- include('../partials/header', {username:username}); %>
+    <h1> Preferences </h1>
+    
+    <% if((username) != "Admin"){ %>
+
+      <h3>Q1: What size student population do you prefer?</h3>
+      <h3>A: <%= (answers["Q1"]) %></h3>
+
+      <h3>Q2: Which location do you prefer?</h3>
+      <h3>A: <%= (answers["Q2"]) %></h3>
+
+      <h3>Q3: Do your prefer co-ed or single gender institutions?</h3>
+      <h3>A: <%= (answers["Q3"]) %></h3>
+
+      <h3>Q4: Do you prefer private or public institutions?</h3>
+      <h3>A: <%= (answers["Q4"]) %></h3>
+
+      <h3>Q5: What Major do you want to pursue?</h3>
+      <h3>A: <%= (answers["Q5"]) %></h3>
+
+      <h3>Q6: What's your price range?</h3>
+      <h3>A: <%= (answers["Q6"]) %></h3>
+
+      <h3>Q7: Do you prefer an institution that provides a graduate program?</h3>
+      <h3>A: <%= (answers["Q7"]) %></h3>
+
+
+    <%}else{%>
+      
+      <h3> You sneaky devil you, you didn't have to take the survey. Here are your results anyway</h3>
+      <h3>Q1: What size student population do you prefer?</h3>
+      <h3>A:</h3>
+
+      <h3>Q2: Which location do you prefer?</h3>
+      <h3>A:</h3>
+
+      <h3>Q3: Do your prefer co-ed or single gender institutions?</h3>
+      <h3>A:</h3>
+
+      <h3>Q4: Do you prefer private or public institutions?</h3>
+      <h3>A:</h3>
+
+      <h3>Q5: What Major do you want to pursue?</h3>
+      <h3>A:</h3>
+
+      <h3>Q6: What's your price range?</h3>
+      <h3>A:</h3>
+
+      <h3>Q7: Do you prefer an institution that provides a graduate program?</h3>
+      <h3>A:</h3>
+
+    <%}%>
+
+    <form action = "/survey/startSurvey" method= "get">
+      <div class="ml-auto mr-sm-5">
+        <button class="btn btn-success" > Change My Responses </button>
+      </div>
+    </form>
 
   </body>
   
