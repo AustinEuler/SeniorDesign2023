@@ -2,6 +2,7 @@ var express =  require('express')
 var router = express.Router();
 const crypto = require("crypto") //Austin Code
 const path = require('path')
+const DAORankings = require('../rankings.js')
 
 
 router.get('/',(req,res)=>{
@@ -46,8 +47,11 @@ router.post('/started',(req,res)=> {
     if(surveyStarted == false){
         req.session.surveyStarted = true
     }
- 
+    
+
     counter = req.session.counter
+
+    
     console.log(response)
     
     if(surveyStarted == false){
@@ -107,6 +111,8 @@ router.post('/started',(req,res)=> {
         console.log(req.session.SurveyAnswers)
         console.log("Completed survey as a Guest: ", req.session.CompletedSurveyAsGuest)
         
+        //DAORankings.processQuestionnaireAnswers(seq.session.SurveyAnswers)
+
         res.render('pages/surveyEnd', {username: req.session.username, 
             CompletedSurveyAsGuest: req.CompletedSurveyAsGuest})
     }

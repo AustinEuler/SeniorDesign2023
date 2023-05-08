@@ -2,6 +2,7 @@ var express =  require('express')
 var router = express.Router();
 const crypto = require("crypto") //Austin Code
 const path = require('path')
+const DAO = require('../rankings.js')
 
 
 //Austin Code - Restricts user to only accessing the login page even if they manually input 'u'
@@ -38,6 +39,8 @@ router.get('/profile/preferences', (req,res) => {
 
 
 router.get('/profile/results', (req,res) => {
+    DAO.testme();
+    //DAO.processQuestionnaireAnswers(req.session.SurveyAnswers)
     res.render('pages/Results',{username: req.session.username, answers: req.session.SurveyAnswers})
     console.log('User Location: Profile Page - Results')
 

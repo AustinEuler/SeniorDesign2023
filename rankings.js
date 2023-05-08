@@ -10,8 +10,12 @@ const db = mysql.createPool({
   port: "33061"
 });
 
+function testme(){
+  console.log("This function works")
+}
 // function to process user's answers to questionnaire
 function processQuestionnaireAnswers(userAnswers) {
+    console.log("This function works")
     // schools to rank
     const schoolsToRank = ['Clark Atlanta', 'Morehouse', 'Spelman', 'Morris Brown'];
   
@@ -42,6 +46,10 @@ function processQuestionnaireAnswers(userAnswers) {
       });
     });
   }
+
+exports.processQuestionnaireAnswers = processQuestionnaireAnswers;
+exports.testme = testme;
+  
   
 
   

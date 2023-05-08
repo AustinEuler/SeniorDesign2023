@@ -162,6 +162,7 @@ router.post("/Registration", (req, res) =>{
         
     }
 })
+
 /*
 router.post("/Registration", (req, res)=>{
     let name = req.body.name
