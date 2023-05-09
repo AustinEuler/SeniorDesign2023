@@ -63,23 +63,35 @@ app.get("/clark-atlanta", (req, res) => {
     const sql = "SELECT * FROM schools_info WHERE name = 'Clark Atlanta University'";
     db.query(sql, (err, result) => {
       if (err) throw err;
-      res.render("pages/clark-atlanta", { school: result[0] });
+      res.render("pages/clark-atlanta", { username:req.session.username, school: result[0] });
     });
   });
 
   app.get("/morehouse", (req, res) => {
-    const sql = "SELECT * FROM schools_info WHERE name = 'Morehouse College'";
+    var display = {}
+    /*
+    let sql = "SELECT * FROM school_answers WHERE school = 'Morehouse'";
     db.query(sql, (err, result) => {
-      if (err) throw err;
-      res.render("pages/morehouse", { school: result[0] });
-    });
+        if (err) throw err;
+        display[school] = result[0]
+        //res.render("pages/morehouse", { username:req.session.username, school: result[0] });
+      });
+    */
+    const sql1 = "SELECT * FROM schools_info WHERE name = 'Morehouse College'";
+    db.query(sql1, (err, result) => {
+        if (err) throw err;
+        //display[schoolA] = result[0]
+        res.render("pages/morehouse", { username:req.session.username, school: result[0] });
+      });
+
+      //res.render("pages/morehouse", { username:req.session.username, school: display[school], schoolA: display[schoolA] });
   });
 
   app.get("/spelman", (req, res) => {
     const sql = "SELECT * FROM schools_info WHERE name = 'spelman'";
     db.query(sql, (err, result) => {
       if (err) throw err;
-      res.render("pages/spelman", { school: result[0] });
+      res.render("pages/spelman", { username:req.session.username, school: result[0] });
     });
   });
 
@@ -87,7 +99,7 @@ app.get("/clark-atlanta", (req, res) => {
     const sql = "SELECT * FROM schools_info WHERE name = 'Morris Brown College'";
     db.query(sql, (err, result) => {
       if (err) throw err;
-      res.render("pages/morris-brown", { school: result[0] });
+      res.render("pages/morris-brown", { username:req.session.username, school: result[0] });
     });
   });
 

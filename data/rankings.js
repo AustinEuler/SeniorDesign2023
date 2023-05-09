@@ -15,7 +15,6 @@ function testme(){
 }
 // function to process user's answers to questionnaire
 function processQuestionnaireAnswers(userAnswers) {
-    console.log("This function works")
     // schools to rank
     const schoolsToRank = ['Clark Atlanta', 'Morehouse', 'Spelman', 'Morris Brown'];
   
@@ -26,10 +25,12 @@ function processQuestionnaireAnswers(userAnswers) {
           return `question${index+1} = '${userAnswers[`question${index+1}`]}'`
         }).join(' + ')}
       ) AS score
-      FROM new_schools
+      FROM school_answers
       WHERE school IN (${schoolsToRank.map(school => `'${school}'`).join(', ')})
       ORDER BY score DESC
     `;
+
+
   
     // connect to database and run query
     db.getConnection((err, connection) => {
@@ -45,6 +46,7 @@ function processQuestionnaireAnswers(userAnswers) {
         connection.release();
       });
     });
+    console.log(schoolsToRank)
   }
 
 exports.processQuestionnaireAnswers = processQuestionnaireAnswers;

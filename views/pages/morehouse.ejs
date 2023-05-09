@@ -17,6 +17,9 @@
     <p><strong>Students Receving Financial aid</strong> <%= school.sturecfinaid %></p>
     <p><strong>Graduation Rate</strong> <%= school.gradrate %></p>-->
 
+    <!--
+    <h4> Basic Information</h4>
+
     <ul class="list-group">
       <li class="list-group-item"><strong>Location:</strong> <%= school.location %></li>
       <li class="list-group-item"><strong>Mascot:</strong> <%= school.mascot %></li>
@@ -27,6 +30,22 @@
       <li class="list-group-item"><strong>Students Receiving Fin. Aid</strong> <%= school.sturecfinaid %></li>
       <li class="list-group-item"><strong>Graduation Rate:</strong> <%= school.gradrate %></li>
     </ul>
+
+  -->
+
+
+  
+  <h4> School Survey Answer Key - Don't Be A Cheater!</h4>
+  <ul class="list-group">
+    <li class="list-group-item"><strong>Q1:</strong> <%= school.question1 %></li>
+    <li class="list-group-item"><strong>Q2:</strong> <%= school.question2 %></li>
+    <li class="list-group-item"><strong>Q3:</strong> <%= school.question3 %></li>
+    <li class="list-group-item"><strong>Q4:</strong> <%= school.question4 %></li>
+    <li class="list-group-item"><strong>Q5:</strong> <%= school.question5 %></li>
+    <li class="list-group-item"><strong>Q6:</strong> <%= school.question6 %></li>
+    <li class="list-group-item"><strong>Q7:</strong> <%= school.question7 %></li>
+  </ul>
+
 
     <!-- etc. -->
     <footer><%- include('../partials/footer'); %></footer>

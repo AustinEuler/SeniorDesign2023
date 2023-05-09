@@ -2,7 +2,7 @@ var express =  require('express')
 var router = express.Router();
 const crypto = require("crypto") //Austin Code
 const path = require('path')
-//const DAOauth = require("../data/server")
+const DAOauth = require("../data/server")
 
 /*const appObject = require('../appObjects')*/
 /*const DAO = require(path.join(__dirname, '..', 'daoUtil'))*/
