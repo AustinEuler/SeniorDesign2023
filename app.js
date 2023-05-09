@@ -3,6 +3,7 @@ const express = require("express");
 const session = require("express-session");
 const app = express();
 const { randomUUID } = require('crypto');
+url = require('url')
 
 const PORT = 4000 
 
@@ -44,6 +45,22 @@ app.get("/registration", function(req,res){
 })
 app.get("/about", function(req,res){
     res.render('pages/About', {username: req.session.username});
+})
+
+app.get("/clark-atlanta", function(req,res){
+    res.render('pages/clark-atlanta', {username: req.session.username});
+})
+
+app.get("/morris-brown", function(req,res){
+    res.render('pages/morris-brown', {username: req.session.username});
+})
+
+app.get("/spelman", function(req,res){
+    res.render('pages/spelman', {username: req.session.username});
+})
+
+app.get("/morehouse", function(req,res){
+    res.render('pages/morehouse', {username: req.session.username});
 })
 
 /*
