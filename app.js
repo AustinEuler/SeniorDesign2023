@@ -56,6 +56,8 @@ app.get("/about", function(req,res){
     res.render('pages/About', {username: req.session.username});
 })
 
+/*
+
 app.get("/clark-atlanta", (req, res) => {
     const sql = "SELECT * FROM schools_info WHERE name = 'Clark Atlanta University'";
     db.query(sql, (err, result) => {
@@ -88,7 +90,7 @@ app.get("/clark-atlanta", (req, res) => {
     });
   });
 
-
+*/
 
 /*
 app.get("/Question1", function(req,res){

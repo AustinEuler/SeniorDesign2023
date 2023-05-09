@@ -2,7 +2,7 @@ var express =  require('express')
 var router = express.Router();
 const crypto = require("crypto") //Austin Code
 const path = require('path')
-const DAO = require('../data/rankings.js')
+//const DAO = require('../data/rankings.js')
 
 
 //Austin Code - Restricts user to only accessing the login page even if they manually input 'u'

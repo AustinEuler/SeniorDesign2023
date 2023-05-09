@@ -2,7 +2,7 @@ var express =  require('express')
 var router = express.Router();
 const crypto = require("crypto") //Austin Code
 const path = require('path')
-const DAORankings = require('../data/rankings.js')
+//const DAORankings = require('../data/rankings.js')
 
 
 router.get('/',(req,res)=>{
@@ -41,22 +41,32 @@ router.post('/started',(req,res)=> {
     }
     */
     
-    prevButton = req.body.button
-    response = req.body
-
     if(surveyStarted == false){
         req.session.surveyStarted = true
+        surveyStarted = req.session.surveyStarted
     }
     
 
-    counter = req.session.counter
+    // allows the user to go back to previous question
+    if((req.body.button != undefined) ){
+        prevButton = req.body.button
+        response = req.body
+        console.log(response)
+
+        if(prevButton == 'prev'){
+            req.session.counter -= 2
+            console.log("User chose to go back to previous question")
+        }else{
+            console.log("User chose to advance to next question")
+        }
+
+        counter = req.session.counter
+
+    }else{
+        counter = req.session.counter
+    }
 
     
-    console.log(response)
-    
-    if(surveyStarted == false){
-        req.session.surveyStarted = true
-    }
 
     if(counter == 0){
         console.log("Starting survey...")
