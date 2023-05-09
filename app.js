@@ -2,8 +2,17 @@
 const express = require("express");
 const session = require("express-session");
 const app = express();
+const mysql = require("mysql");
 const { randomUUID } = require('crypto');
-url = require('url')
+const url = require('url')
+
+const db = mysql.createPool({
+    host: "localhost",
+    user: "root",
+    password: "password",
+    database: "HBCUmatch",
+    port: "33061"
+  });
 
 const PORT = 4000 
 
@@ -47,21 +56,39 @@ app.get("/about", function(req,res){
     res.render('pages/About', {username: req.session.username});
 })
 
-app.get("/clark-atlanta", function(req,res){
-    res.render('pages/clark-atlanta', {username: req.session.username});
-})
+app.get("/clark-atlanta", (req, res) => {
+    const sql = "SELECT * FROM schools_info WHERE name = 'Clark Atlanta University'";
+    db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.render("clark-atlanta.ejs", { school: result[0] });
+    });
+  });
 
-app.get("/morris-brown", function(req,res){
-    res.render('pages/morris-brown', {username: req.session.username});
-})
+  app.get("/morehouse", (req, res) => {
+    const sql = "SELECT * FROM schools_info WHERE name = 'Morehouse College'";
+    db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.render("morehouse.ejs", { school: result[0] });
+    });
+  });
 
-app.get("/spelman", function(req,res){
-    res.render('pages/spelman', {username: req.session.username});
-})
+  app.get("/spelman", (req, res) => {
+    const sql = "SELECT * FROM schools_info WHERE name = 'spelman'";
+    db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.render("spelman.ejs", { school: result[0] });
+    });
+  });
 
-app.get("/morehouse", function(req,res){
-    res.render('pages/morehouse', {username: req.session.username});
-})
+  app.get("/morris-brown", (req, res) => {
+    const sql = "SELECT * FROM schools_info WHERE name = 'Morris Brown College'";
+    db.query(sql, (err, result) => {
+      if (err) throw err;
+      res.render("morris-brown.ejs", { school: result[0] });
+    });
+  });
+
+
 
 /*
 app.get("/Question1", function(req,res){
