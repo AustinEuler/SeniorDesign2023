@@ -2,7 +2,7 @@ var express =  require('express')
 var router = express.Router();
 const crypto = require("crypto") //Austin Code
 const path = require('path')
-const DAORankings = require('../rankings.js')
+const DAORankings = require('../data/rankings.js')
 
 
 router.get('/',(req,res)=>{

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Morehouse College</title>
+    <%- include('../partials/colleges'); %>
+  </head>
+  <body>
+    <%- include('../partials/header'); %>
+    <h1>Morehouse College</h1>
+    <!--<p><strong>Location:</strong> <%= school.location %></p>
+    <p><strong>mascot:</strong> <%= school.mascot %></p>
+    <p><strong>website</strong> <%= school.website %></p>
+    <p><strong>Student to Faculty Ratio:</strong> <%= school.stutofac %></p>
+    <p><strong>Acceptance Rate:</strong> <%= school.acceptrate %></p>
+    <p><strong>Tuition and Fees</strong> <%= school.tuitionandfees %></p>
+    <p><strong>Room and Board</strong> <%= school.randb %></p>
+    <p><strong>Students Receving Financial aid</strong> <%= school.sturecfinaid %></p>
+    <p><strong>Graduation Rate</strong> <%= school.gradrate %></p>-->
+
+    <ul class="list-group">
+      <li class="list-group-item"><strong>Location:</strong> <%= school.location %></li>
+      <li class="list-group-item"><strong>Mascot:</strong> <%= school.mascot %></li>
+      <li class="list-group-item"><strong>Student|Faculty Ratio:</strong> <%= school.stutofac %></li>
+      <li class="list-group-item"><strong>Acceptance Rate:</strong> <%= school.acceptrate %></li>
+      <li class="list-group-item"><strong>Tuition and Fees</strong> <%= school.tuitionandfees %></li>
+      <li class="list-group-item"><strong>Room and Board:</strong> <%= school.randb %></li>
+      <li class="list-group-item"><strong>Students Receiving Fin. Aid</strong> <%= school.sturecfinaid %></li>
+      <li class="list-group-item"><strong>Graduation Rate:</strong> <%= school.gradrate %></li>
+    </ul>
+
+    <!-- etc. -->
+    <footer><%- include('../partials/footer'); %></footer>
+  </body>
+</html>
